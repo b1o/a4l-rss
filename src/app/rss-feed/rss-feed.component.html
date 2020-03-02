@@ -1,0 +1,14 @@
+<button *ngFor="let url of urls" (click)="urlClicked(url.url)">
+  {{ url.name }}
+</button>
+
+<div>
+  <label for="date">Дата:</label>
+  <input id="date" type="date" [(ngModel)]="date" />
+</div>
+<pre style="border: 1px solid;">
+  {{ data | json }}
+
+  <div *ngIf="loading">loading..</div>
+  <span *ngIf="err">{{err}}</span>
+</pre>
