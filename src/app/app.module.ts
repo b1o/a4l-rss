@@ -6,22 +6,29 @@ import { RssFeedComponent } from './rss-feed/rss-feed.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ChartDataComponent } from './chart-data/chart-data.component';
+import { ChartDataModule } from './chart-data/chart-data.module';
 
 @NgModule({
   declarations: [RssFeedComponent],
-  imports: [BrowserModule, HttpClientModule, FormsModule],
-  bootstrap: [RssFeedComponent],
-  entryComponents: [RssFeedComponent],
+  imports: [BrowserModule, HttpClientModule, FormsModule, ChartDataModule],
+  bootstrap: [ChartDataComponent],
+  entryComponents: [ChartDataComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {
   constructor(private injector: Injector) {}
 
   ngDoBootstrap() {
-    const el = createCustomElement(RssFeedComponent, {
+    // const el = createCustomElement(RssFeedComponent, {
+    //   injector: this.injector
+    // });
+
+    // customElements.define('rss-feed', el);
+
+    const el = createCustomElement(ChartDataComponent, {
       injector: this.injector
     });
-
-    customElements.define('rss-feed', el);
+    customElements.define('chart-data', el);
   }
 }

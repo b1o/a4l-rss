@@ -4,15 +4,12 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 @Injectable()
 export class RssfeedService {
   private url = 'http://rss.bse-sofia.bg/?page=IssuerShares&code=a4l';
+  private backend = 'https://a4l.herokuapp.com/';
 
   constructor(private http: HttpClient) {}
 
   getData(params: { [key: string]: string }) {
-    return this.http.get('/data/', {
-      observe: 'body',
-      params: new HttpParams({ fromObject: params }),
-      responseType: 'text'
-    });
+    return this.http.get(this.backend + 'data');
   }
 
   getDispatcherData() {
